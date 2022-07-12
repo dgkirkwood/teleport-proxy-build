@@ -8,7 +8,7 @@ packer {
 }
 
 source "amazon-ebs" "ubuntu" {
-  ami_name      = "learn-packer-linux-aws"
+  ami_name      = "teleport-proxy"
   instance_type = "t2.micro"
   region        = "ap-southeast-2"
   vpc_id = "vpc-04e78c4cc247da19a"
@@ -28,8 +28,18 @@ source "amazon-ebs" "ubuntu" {
 }
 
 build {
-  name    = "learn-packer"
+  name    = "dk-teleport-proxy"
   sources = [
     "source.amazon-ebs.ubuntu"
   ]
+  provisioner "shell" {
+    inline = [
+      "echo Installing Teleport...",
+      "sudo curl https://deb.releases.teleport.dev/teleport-pubkey.asc -o /usr/share/keyrings/teleport-archive-keyring.asc",
+      "echo 'deb [signed-by=/usr/share/keyrings/teleport-archive-keyring.asc] https://deb.releases.teleport.dev/ stable main' | sudo tee /etc/apt/sources.list.d/teleport.list > /dev/null",
+      "sudo apt-get update",
+      "sleep 10",
+      "sudo apt-get install teleport"
+    ]
+  }
 }
