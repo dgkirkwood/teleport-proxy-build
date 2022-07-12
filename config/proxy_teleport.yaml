@@ -23,6 +23,11 @@ auth_service:
   cluster_name: dkdemo.teleportdemo.com
   proxy_listener_mode: multiplex
   license_file: /var/lib/teleport/license.pem
+  authentication:
+    type: local
+    second_factor: webauthn
+    webauthn:
+      rp_id: dkdemo.teleportdemo.com
 ssh_service:
   enabled: "yes"
   labels:
