@@ -5,7 +5,7 @@ on:
 
 jobs:
   call-image-build-job:
-    uses: ./.github/workflows/imagebuild.yaml@main
+    uses: ./.github/workflows/imagebuild.yaml
     with:
       target_file: aws-ubuntu.pkr.hcl
     secrets: inherit
