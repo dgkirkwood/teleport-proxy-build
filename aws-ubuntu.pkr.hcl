@@ -12,7 +12,7 @@ variable "ent_license" {
 }
 
 source "amazon-ebs" "ubuntu" {
-  ami_name      = "teleport-proxy"
+  ami_name      = "dk-teleport-proxy"
   instance_type = "t2.micro"
   region        = "ap-southeast-2"
   vpc_id = "vpc-04e78c4cc247da19a"
