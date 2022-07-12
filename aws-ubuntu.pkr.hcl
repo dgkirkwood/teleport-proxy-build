@@ -7,6 +7,10 @@ packer {
   }
 }
 
+variable "ent_license" {
+  default = env("ENT_LICENSE")
+}
+
 source "amazon-ebs" "ubuntu" {
   ami_name      = "teleport-proxy"
   instance_type = "t2.micro"
@@ -41,5 +45,17 @@ build {
       "sleep 10",
       "sudo apt-get install teleport"
     ]
+  }
+  provisioner "shell" {
+    environment_vars = [
+      "ENT_LICENSE=${var.ent_license}"
+    ]
+    inline = [
+      "echo $ENT_LICENSE | sudo tee /var/lib/teleport/license.pem"
+    ]
+  }
+  provisioner "file" {
+    source = "config/proxy_teleport.yaml"
+    destination = "/tmp/proxy_teleport.yaml"
   }
 }
