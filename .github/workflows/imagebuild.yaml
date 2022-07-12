@@ -18,7 +18,7 @@ jobs:
         with:
           command: validate
           arguments: -syntax-only
-          target: aws-ubuntu.pkr.hcl
+          target: .
 
       # build artifact
       - name: Build Artifact
@@ -27,7 +27,7 @@ jobs:
           command: build
           arguments: "-color=false -on-error=abort"
           target: aws-ubuntu.pkr.hcl
-          working_directory: /
+          working_directory: ${{ github.workspace }}
         env:
           PACKER_LOG: 1
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
