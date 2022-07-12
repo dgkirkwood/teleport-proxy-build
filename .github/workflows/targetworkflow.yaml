@@ -1,0 +1,11 @@
+on:
+  push:
+    paths:
+      - 'target.pkr.hcl'
+
+jobs:
+  call-image-build-job:
+    uses: ./.github/workflows/imagebuild.yaml
+    with:
+      target_file: target.pkr.hcl
+    secrets: inherit
