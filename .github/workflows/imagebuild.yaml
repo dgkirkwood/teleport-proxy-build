@@ -20,13 +20,20 @@ jobs:
           arguments: -syntax-only
           target: .
 
+      # initialise Packer
+      - name: Packer Init
+        uses: hashicorp/packer-github-actions@master
+        with:
+          command: init
+          target: .
+
       # build artifact
       - name: Build Artifact
         uses: hashicorp/packer-github-actions@master
         with:
           command: build
           arguments: "-color=false -on-error=abort"
-          target: aws-ubuntu.pkr.hcl
+          target: .
           working_directory: ${{ github.workspace }}
         env:
           PACKER_LOG: 1
