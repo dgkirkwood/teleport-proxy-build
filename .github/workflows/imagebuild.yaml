@@ -1,7 +1,11 @@
 name: Packer
 
 on:
-  push:
+  workflow_call:
+    inputs:
+      target_file:
+        required: true
+        type: string
 
 jobs:
   packer:
@@ -18,14 +22,14 @@ jobs:
         with:
           command: validate
           arguments: -syntax-only
-          target: .
+          target: ${{ inputs.target_file }}
 
       # initialise Packer
       - name: Packer Init
         uses: hashicorp/packer-github-actions@master
         with:
           command: init
-          target: .
+          target: ${{ inputs.target_file }}
 
       # build artifact
       - name: Build Artifact
@@ -33,7 +37,7 @@ jobs:
         with:
           command: build
           arguments: "-color=false -on-error=abort"
-          target: .
+          target: ${{ inputs.target_file }}
           working_directory: ${{ github.workspace }}
         env:
           PACKER_LOG: 1

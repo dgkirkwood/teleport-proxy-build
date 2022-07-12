@@ -1,0 +1,10 @@
+on:
+  push:
+    paths:
+      - 'aws-ubuntu.pkr.hcl'
+
+jobs:
+  uses: ./.github/workflows/imagebuild.yaml
+  with:
+    target_file: aws-ubuntu.pkr.hcl
+  secrets: inherit
