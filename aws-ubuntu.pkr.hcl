@@ -11,6 +11,8 @@ source "amazon-ebs" "ubuntu" {
   ami_name      = "learn-packer-linux-aws"
   instance_type = "t2.micro"
   region        = "ap-southeast-2"
+  vpc_id = "vpc-04e78c4cc247da19a"
+  subnet_id = "subnet-05060b931f314d650"
   source_ami_filter {
     filters = {
       name                = "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"
@@ -25,7 +27,6 @@ source "amazon-ebs" "ubuntu" {
 
 build {
   name    = "learn-packer"
-  vpc_id = "vpc-04e78c4cc247da19a"
   sources = [
     "source.amazon-ebs.ubuntu"
   ]
