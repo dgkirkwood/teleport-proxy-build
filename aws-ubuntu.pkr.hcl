@@ -38,7 +38,7 @@ build {
   ]
   provisioner "shell" {
     inline = [
-      "echo Installing Teleport...",
+      "echo Installing Teleport....",
       "sudo curl https://deb.releases.teleport.dev/teleport-pubkey.asc -o /usr/share/keyrings/teleport-archive-keyring.asc",
       "echo 'deb [signed-by=/usr/share/keyrings/teleport-archive-keyring.asc] https://deb.releases.teleport.dev/ stable main' | sudo tee /etc/apt/sources.list.d/teleport.list > /dev/null",
       "sudo apt-get update",
