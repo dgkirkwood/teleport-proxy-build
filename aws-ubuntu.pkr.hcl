@@ -25,6 +25,7 @@ source "amazon-ebs" "ubuntu" {
 
 build {
   name    = "learn-packer"
+  vpc_id = "vpc-04e78c4cc247da19a"
   sources = [
     "source.amazon-ebs.ubuntu"
   ]
