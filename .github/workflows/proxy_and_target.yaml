@@ -5,7 +5,7 @@ on:
 
 jobs:
   call-image-build-job:
-    uses: dgkirkwood/teleport-proxy-build/.github/workflows/imagebuild.yaml
+    uses: ./.github/workflows/imagebuild.yaml
     with:
       target_file: aws-ubuntu.pkr.hcl
     secrets: inherit
