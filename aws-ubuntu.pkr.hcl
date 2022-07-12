@@ -19,6 +19,8 @@ source "amazon-ebs" "ubuntu" {
   subnet_id = "subnet-05060b931f314d650"
   associate_public_ip_address = true
   ssh_interface = "public_ip"
+  force_deregister = true
+  force_delete_snapshot = true
   source_ami_filter {
     filters = {
       name                = "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"
