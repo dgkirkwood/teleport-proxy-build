@@ -38,9 +38,9 @@ build {
   provisioner "shell" {
     inline = [
         "echo Adding Users...",
-        "adduser --gecos '' --disabled-password developer",
-        "adduser --gecos '' --disabled-password operations",
-        "adduser --gecos '' --disabled-password sysadmin"
+        "sudo adduser --gecos '' --disabled-password developer",
+        "sudo adduser --gecos '' --disabled-password operations",
+        "sudo adduser --gecos '' --disabled-password sysadmin"
     ]
   }
   provisioner "shell" {
