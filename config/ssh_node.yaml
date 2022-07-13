@@ -1,0 +1,29 @@
+#
+# A Sample Teleport configuration file.
+# Creates a single proxy, auth and node server.
+#
+# Things to update:
+#  1. license.pem: You only need a license from https://dashboard.goteleport.com
+#     if you are an Enterprise customer.
+#
+version: v2
+teleport:
+  nodename: ssh_target
+  data_dir: /var/lib/teleport
+  log:
+    output: stderr
+    severity: INFO
+    format:
+      output: text
+  ca_pin: []
+  diag_addr: ""
+  auth_servers:
+    - dkdemo.teleportdemo.com:443
+ssh_service:
+  enabled: "yes"
+  labels:
+    role: target
+  commands:
+  - name: hostname
+    command: [hostname]
+    period: 1m0s

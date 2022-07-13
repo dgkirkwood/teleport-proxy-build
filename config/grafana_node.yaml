@@ -1,0 +1,32 @@
+version: v2
+teleport:
+  nodename: grafana
+  data_dir: /var/lib/teleport
+  join_params:
+    token_name: xxxxxxxx
+    method: token
+  auth_servers:
+  - dkdemo.teleportdemo.com:443
+  log:
+    output: stderr
+    severity: INFO
+    format:
+      output: text
+  ca_pin: ""
+  diag_addr: ""
+auth_service:
+  enabled: "no"
+ssh_service:
+  enabled: "no"
+proxy_service:
+  enabled: "no"
+  https_keypairs: []
+  acme: {}
+app_service:
+  enabled: "yes"
+  debug_app: false
+  apps:
+  - name: 'grafana'
+    uri: http://localhost:3000
+    public_addr: ""
+    insecure_skip_verify: false
