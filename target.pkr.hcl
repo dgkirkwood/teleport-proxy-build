@@ -67,7 +67,7 @@ build {
   }
   provisioner "shell" {
     inline = [
-      "Moving config files...",
+      "echo Moving config files...",
       "mkdir ~/configs",
       "sudo mv ~/grafana_node.yaml ~/configs/grafana_node.yaml",
       "sudo mv ~/ssh_node.yaml ~/configs/ssh_node.yaml"

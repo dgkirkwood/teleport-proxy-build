@@ -62,7 +62,7 @@ build {
   }
   provisioner "shell" {
     inline = [
-      "Creating config file...",
+      "echo Creating config file...",
       "sudo mv ~/proxy_teleport.yaml /etc/teleport.yaml"
     ]
   }
