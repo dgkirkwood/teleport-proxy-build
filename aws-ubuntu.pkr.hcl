@@ -58,12 +58,12 @@ build {
   }
   provisioner "file" {
     source = "config/proxy_teleport.yaml"
-    destination = "/tmp/proxy_teleport.yaml"
+    destination = "~/proxy_teleport.yaml"
   }
   provisioner "shell" {
     inline = [
       "Creating config file...",
-      "sudo mv /tmp/proxy_teleport.yaml /etc/teleport.yaml"
+      "sudo mv ~/proxy_teleport.yaml /etc/teleport.yaml"
     ]
   }
 }
