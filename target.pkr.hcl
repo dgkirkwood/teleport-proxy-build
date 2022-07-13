@@ -57,4 +57,20 @@ build {
         "sudo systemctl enable grafana-server.service"
     ]
   }
+  provisioner "file" {
+    source = "config/grafana_node.yaml"
+    destination = "/tmp/grafana_node.yaml"
+  }
+  provisioner "file" {
+    source = "config/ssh_node.yaml"
+    destination = "/tmp/ssh_node.yaml"
+  }
+  provisioner "shell" {
+    inline = [
+      "Moving config files...",
+      "mkdir ~/configs",
+      "sudo mv /tmp/grafana_node.yaml ~/configs/grafana_node.yaml",
+      "sudo mv /tmp/ssh_node.yaml ~/configs/ssh_node.yaml"
+    ]
+  }
 }
