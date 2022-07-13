@@ -37,6 +37,14 @@ build {
   ]
   provisioner "shell" {
     inline = [
+        "echo Adding Users...",
+        "adduser --gecos '' --disabled-password developer",
+        "adduser --gecos '' --disabled-password operations",
+        "adduser --gecos '' --disabled-password sysadmin"
+    ]
+  }
+  provisioner "shell" {
+    inline = [
       "echo Installing Teleport....",
       "sudo curl https://deb.releases.teleport.dev/teleport-pubkey.asc -o /usr/share/keyrings/teleport-archive-keyring.asc",
       "echo 'deb [signed-by=/usr/share/keyrings/teleport-archive-keyring.asc] https://deb.releases.teleport.dev/ stable main' | sudo tee /etc/apt/sources.list.d/teleport.list > /dev/null",
