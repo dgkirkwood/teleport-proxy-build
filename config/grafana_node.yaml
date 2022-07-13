@@ -6,7 +6,7 @@ teleport:
     token_name: xxxxxxxx
     method: token
   auth_servers:
-  - dkdemo.teleportdemo.com:443
+  - dk.teleportdemo.com:443
   log:
     output: stderr
     severity: INFO

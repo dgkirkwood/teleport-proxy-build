@@ -45,7 +45,7 @@ build {
       "echo 'deb [signed-by=/usr/share/keyrings/teleport-archive-keyring.asc] https://deb.releases.teleport.dev/ stable main' | sudo tee /etc/apt/sources.list.d/teleport.list > /dev/null",
       "sudo apt-get update",
       "sleep 10",
-      "sudo apt-get install teleport-ent=9.3.9"
+      "sudo apt-get install teleport-ent"
     ]
   }
   provisioner "shell" {
